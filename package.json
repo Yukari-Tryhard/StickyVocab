@@ -1,0 +1,19 @@
+{
+  "name": "sticky-vocab",
+  "version": "1.0.0",
+  "description": "Chrome extension for saving and learning vocabulary terms while browsing",
+  "main": "background.js",
+  "scripts": {
+    "create-icons": "node icons/create_icons.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "vocabulary",
+    "learning"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.11.2"
+  }
+} 

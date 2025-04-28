@@ -1,0 +1,139 @@
+.sticky-vocab-tooltip {
+  position: fixed;
+  background-color: #4285f4;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  z-index: 2147483646 !important;
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: auto !important;
+  transition: transform 0.2s;
+}
+
+.sticky-vocab-tooltip:hover {
+  transform: scale(1.05);
+  background-color: #2a75f3;
+}
+
+.sticky-vocab-popup {
+  position: fixed;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  width: 300px;
+  z-index: 2147483647 !important;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+  pointer-events: auto !important;
+  border: 1px solid #ccc;
+  animation: popup-appear 0.2s ease-out;
+}
+
+@keyframes popup-appear {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sticky-vocab-popup-header {
+  background-color: #4285f4;
+  color: white;
+  padding: 12px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  -webkit-user-select: none;
+  font-weight: bold;
+  cursor: default;
+}
+
+.sticky-vocab-popup-close {
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0 5px;
+  margin-right: -5px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.sticky-vocab-popup-close:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sticky-vocab-popup-content {
+  padding: 15px;
+}
+
+.sticky-vocab-definition {
+  width: 100%;
+  min-height: 80px;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.sticky-vocab-definition:focus {
+  outline: 2px solid #4285f4;
+  border-color: #4285f4;
+}
+
+.sticky-vocab-save-btn {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+
+.sticky-vocab-save-btn:hover {
+  background-color: #2a75f3;
+}
+
+.sticky-vocab-save-btn:active {
+  background-color: #1a65e3;
+  transform: translateY(1px);
+}
+
+.sticky-vocab-highlight {
+  background-color: rgba(255, 255, 0, 0.5);
+  border-bottom: 1px dotted #ff9800;
+  cursor: help;
+}
+
+.sticky-vocab-definition-tooltip {
+  position: fixed;
+  background-color: #333;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  max-width: 250px;
+  z-index: 2147483646 !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: tooltip-appear 0.15s ease-out;
+}
+
+@keyframes tooltip-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

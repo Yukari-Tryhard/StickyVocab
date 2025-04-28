@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>StickyVocab</title>
+  <style>
+    body {
+      width: 350px;
+      min-height: 300px;
+      max-height: 500px;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+    
+    .header {
+      background-color: #4285f4;
+      color: white;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .rescan-btn {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.2s;
+    }
+    
+    .rescan-btn:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .rescan-btn svg {
+      width: 14px;
+      height: 14px;
+    }
+    
+    .search-container {
+      margin-top: 5px;
+    }
+    
+    .search-box {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    .content {
+      padding: 15px;
+      overflow-y: auto;
+      max-height: 350px;
+    }
+    
+    .term-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .term-item {
+      border-bottom: 1px solid #eee;
+      padding: 10px 0;
+    }
+    
+    .term-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .term-text {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .term-definition {
+      color: #555;
+      margin-top: 5px;
+      font-size: 14px;
+    }
+    
+    .action-buttons {
+      display: flex;
+    }
+    
+    .edit-btn, .delete-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #777;
+      font-size: 14px;
+      margin-left: 5px;
+    }
+    
+    .edit-btn:hover {
+      color: #4285f4;
+    }
+    
+    .delete-btn:hover {
+      color: #f44242;
+    }
+    
+    .no-terms {
+      color: #777;
+      text-align: center;
+      margin-top: 50px;
+    }
+    
+    .edit-container {
+      margin-top: 5px;
+    }
+    
+    .edit-definition {
+      width: 100%;
+      min-height: 60px;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 5px;
+    }
+    
+    .save-edit-btn {
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s linear infinite;
+      margin-right: 5px;
+      display: none;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .status-message {
+      font-size: 12px;
+      margin-top: 5px;
+      color: #4CAF50;
+      display: none;
+      animation: fadeOut 3s forwards;
+      text-align: center;
+    }
+    
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      70% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="title">
+      <span>StickyVocab</span>
+      <div class="actions">
+        <button id="rescanBtn" class="rescan-btn" title="Rescan current page for saved terms">
+          <div id="spinner" class="spinner"></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 2v6h-6"></path>
+            <path d="M3 12a9 9 0 0 1 15-6.7l3-3"></path>
+            <path d="M3 22v-6h6"></path>
+            <path d="M21 12a9 9 0 0 1-15 6.7l-3 3"></path>
+          </svg>
+          Rescan Page
+        </button>
+      </div>
+    </div>
+    <div class="search-container">
+      <input type="text" id="search" class="search-box" placeholder="Search terms...">
+    </div>
+    <div id="statusMessage" class="status-message">Page rescanned successfully!</div>
+  </div>
+  
+  <div class="content">
+    <ul id="termList" class="term-list">
+      <!-- Terms will be dynamically added here -->
+    </ul>
+    <div id="noTerms" class="no-terms" style="display: none;">
+      No terms saved yet. Highlight text on a webpage, click "Note" and add a definition.
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html> 
